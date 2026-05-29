@@ -1,5 +1,7 @@
-FROM maven:3.8.1-openjdk-17 AS build
+FROM maven:3.9.0-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml
+RUN mvn dependency:resolve
 COPY . . 
 RUN mvn clean install -DskipTests
 
